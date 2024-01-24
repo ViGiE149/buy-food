@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Blank
@@ -17,4 +17,80 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+</ion-content> -->
+<!-- home.component.html -->
+
+<!-- home.component.html -->
+
+<ion-header color="dark">
+  <ion-toolbar color="dark">
+    <ion-title> Home </ion-title>
+  </ion-toolbar>
+  <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
+  <div class="swiper-container-Categories">
+    <div class="swiper-slide-Categories" *ngFor="let category of categories">
+      <ion-button
+        class="categories-option"
+        size="small"
+        shape="round"
+        fill="outline"
+      >
+        {{ category.name }}</ion-button
+      >
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card-header> Featured Food Items </ion-card-header>
+
+  <swiper-container [slidesPerView]="1" [loop]="true">
+    <swiper-slide *ngFor="let item of featuredItems">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img [src]="item.imageUrl" alt="{{ item.name }} Image" />
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ item.name }}</h2>
+              <p>{{ item.description }}</p>
+              <p class="price">
+                {{ item.price | currency:'USD':'symbol':'1.2-2' }}
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+
+  <ion-card>
+    <ion-card-header> Promotions </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let promo of promotions">
+          {{ promo.name }} - {{ promo.discountPercentage }}% off
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="card-header">Categories</div>
+  <ion-card *ngFor="let item of featuredItems" >
+        <ion-card-content (click)="viewProduct(item.imageUrl,item.id,item.name,item.price,item.description)">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img [src]="item.imageUrl" alt="{{ item.name }} Image" />
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ item.name }}</h2>
+              <p>{{ item.description }}</p>
+              <p class="price">
+                {{ item.price | currency:'R':'symbol':'1.2-2' }}
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

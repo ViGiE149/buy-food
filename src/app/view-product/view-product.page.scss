@@ -1,0 +1,47 @@
+/* product-details.component.scss */
+
+ion-content {
+    --ion-background-color: #f8f8f8; /* Light background color */
+  }
+  
+  ion-card {
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+  }
+  
+  ion-card-header {
+    background-color: #ffc107; /* Header background color - Yellow */
+    color: #333333; /* Header text color */
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  ion-card-content {
+    padding: 15px;
+  }
+  
+  ion-thumbnail {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover; /* Ensure the image covers the entire thumbnail */
+  }
+  
+  ion-label {
+    margin-top: 10px;
+  }
+  
+  ion-item {
+    margin-top: 10px;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #ffc107; /* Yellow color for the price */
+  }
+  
+  ion-button {
+    margin-top: 20px;
+    --background: #ffc107; /* Yellow color for the button */
+    --color: #333333; /* Text color for the button */
+  }
+  

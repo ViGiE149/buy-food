@@ -1,0 +1,22 @@
+/* checkout.component.scss */
+
+ion-content {
+    --ion-background-color: #f8f8f8; /* Light background color */
+  }
+  
+  ion-item-divider {
+    background-color: #ffc107; /* Divider background color - Yellow */
+    color: #333333; /* Divider text color */
+    font-weight: bold;
+  }
+  
+  ion-item {
+    margin-top: 10px;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+    --background: #ffc107; /* Yellow color for the button */
+    --color: #333333; /* Text color for the button */
+  }
+  

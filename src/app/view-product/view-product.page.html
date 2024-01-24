@@ -1,0 +1,44 @@
+<!-- product-details.component.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Product Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      Product Name
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Display product details -->
+      <ion-thumbnail>
+        <img [src]="product.imageUrl" alt="{{ product.name }} Image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p class="price">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+      </ion-label>
+
+      <!-- Quantity Selector -->
+      <ion-item>
+        <ion-label>Quantity</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="decreaseQuantity()" [disabled]="quantity === 1">-</ion-button>
+          <ion-label>{{ quantity }}</ion-label>
+          <ion-button (click)="increaseQuantity()">+</ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <!-- Add to Cart Button -->
+      <ion-button expand="full" (click)="addToCart()">Add to Cart</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

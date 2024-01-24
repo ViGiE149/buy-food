@@ -1,27 +1,97 @@
-#container {
-  text-align: center;
+// 
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* home.component.scss */
+
+ion-content {
+  --ion-background-color: #f9f8f7; /* Light yellow background color */
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-card {
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+}
+.card-header{
+width: 100%;
+margin: 0;
+background-color: lightgray; 
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+ion-card-header {
+  background-color: lightgray; /* Header background color - Yellow */
+  color: #333333; /* Header text color */
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  color: #8c8c8c;
+ion-card-content {
+  padding: 15px;
+}
 
+ion-list {
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+ion-item {
+  border-bottom: 1px solid #e0e0e0; /* Light border between items */
+  padding-bottom: 10px;
+}
+
+ion-thumbnail {
+  width: 80px;
+  height: 80px;
+}
+
+ion-label {
+  margin-left: 15px;
+}
+
+.price {
+  font-weight: bold;
+  color: #ffc107; /* Yellow color for the price */
+}
+
+ion-item:hover {
+  background-color: #fff3e0; /* Light background color on hover */
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+
+swiper-container {
+  --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+  --swiper-pagination-color: var(--ion-color-primary, #3880ff);
+  --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
+  --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
+  --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
+}
+
+swiper-slide {
+  display: flex;
+  position: relative;
+
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 18px;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+swiper-slide img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.swiper-container-Categories{
+  display: flex;
+  overflow-x: scroll;
+  gap: 4px;
 }

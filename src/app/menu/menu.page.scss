@@ -1,0 +1,33 @@
+/* menu.component.scss */
+
+ion-content {
+    --ion-background-color: #f8f8f8; /* Light background color */
+  }
+  
+  ion-list {
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    font-size: 18px;
+    --color: #333333; /* Dark text color */
+    border-bottom: 1px solid #ccc; /* Light border between items */
+  }
+  
+  ion-item:last-child {
+    border-bottom: none; /* Remove border for the last item */
+  }
+  
+  ion-item:hover {
+    --background: #e0e0e0; /* Light background color on hover */
+  }
+  
+  ion-label {
+    margin-left: 10px;
+  }
+  
+  ion-icon {
+    color: #777777; /* Gray icon color */
+    margin-right: 10px;
+  }
+  
