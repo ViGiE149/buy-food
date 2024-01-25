@@ -11,12 +11,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="product">
   <ion-card>
     <ion-card-header>
-      Product Name
+     {{product.name}} 
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content >
       <!-- Display product details -->
       <ion-thumbnail>
         <img [src]="product.imageUrl" alt="{{ product.name }} Image">
@@ -24,7 +24,7 @@
       <ion-label>
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
-        <p class="price">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+        <p class="price">{{ product.price | currency:'R':'symbol':'1.2-2' }}</p>
       </ion-label>
 
       <!-- Quantity Selector -->
@@ -38,7 +38,7 @@
       </ion-item>
 
       <!-- Add to Cart Button -->
-      <ion-button expand="full" (click)="addToCart()">Add to Cart</ion-button>
+      <ion-button expand="full" routerLink="/checkout" (click)="addToCart()">Add to Cart</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

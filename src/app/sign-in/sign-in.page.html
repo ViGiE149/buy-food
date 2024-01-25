@@ -21,10 +21,10 @@
       <p class="forgot-password" >Forgot Password?</p>
     </ion-text>
 
-    <ion-button expand="full" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+    <ion-button expand="full" type="submit" routerLink="/home" [disabled]="!loginForm.valid">Login</ion-button>
    
     <ion-text>
-      <p class="create-account"  routerLink="/sign-in" >Create Account</p>
+      <p class="create-account"  routerLink="/sign-up" >Create Account</p>
     </ion-text>
   </form>
 

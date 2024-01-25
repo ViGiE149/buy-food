@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-product',
@@ -8,18 +9,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewProductPage implements OnInit {
 
-
+   productInfor:any;
   product: any; // Replace 'any' with your actual product type/interface
   quantity: number = 1;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {
 
-  ngOnInit() {
+
+  }
+
+  async ngOnInit() {
+    this.product=  await this.passedProductInfor();
+    
     // Retrieve product details from route parameters
-    this.route.params.subscribe((params) => {
-      // Replace 'getProductById' with your actual method to fetch product details
-      this.product = this.getProductById(params['productId']);
-    });
+    // this.route.params.subscribe((params) => {
+    //   // Replace 'getProductById' with your actual method to fetch product details
+    //   this.product = this.getProductById(params['productId']);
+    // });
   }
 
   increaseQuantity() {
@@ -32,6 +38,9 @@ export class ViewProductPage implements OnInit {
     }
   }
 
+  
+
+
   addToCart() {
     // Implement logic to add the product to the cart
     // You can use a service to manage the cart state
@@ -40,17 +49,22 @@ export class ViewProductPage implements OnInit {
   }
 
   // Replace this with your actual method to fetch product details
-  private getProductById(productId: string) {
+  async passedProductInfor() {
     // Implement logic to fetch product details from a service or API
     // For example, call a method in a ProductService
     // productService.getProductById(productId);
+    if (this.router.getCurrentNavigation()?.extras.state) {
+      this.productInfor = this.router.getCurrentNavigation()?.extras.state;
+      console.log(this.productInfor);
+    }  
+    console.log(this.productInfor.id);
     return {
-      id: productId,
-      name: 'Product Name',
-      description: 'Product Description',
-      price: 9.99,
-      imageUrl: 'https://example.com/product.jpg',
-      // ... other product details
+      id: this.productInfor.id,
+      name: this.productInfor.name,
+      description: this.productInfor.description,
+      price: this.productInfor.price,
+      imageUrl: this.productInfor.imageUrl,
+      
     };
   }
 

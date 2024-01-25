@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyAqzkWXdtWQl1uDGsxSpvFWl0-xp64L_j0",
-    authDomain: "co-op-cc34c.firebaseapp.com",
-    projectId: "co-op-cc34c",
-    storageBucket: "co-op-cc34c.appspot.com",
-    messagingSenderId: "768731147434",
-    appId: "1:768731147434:web:eb81936851847940afb4d3"
+    apiKey: "AIzaSyATlhSoqBB5F1NPIGV2WBybjvc42AkMUC4",
+    authDomain: "buy-food-34046.firebaseapp.com",
+    projectId: "buy-food-34046",
+    storageBucket: "buy-food-34046.appspot.com",
+    messagingSenderId: "167984948537",
+    appId: "1:167984948537:web:303d7cacfbd376ac99b4e8",
+    measurementId: "G-SCG3436T0J"
   }
 };
 

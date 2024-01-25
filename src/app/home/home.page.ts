@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router,) {}
   featuredItems = [
     {
       id:"1",
@@ -45,8 +47,18 @@ export class HomePage {
     { name: 'New Chezzy Rage' }
   ];
 
-  viewProduct( imageUrl:string,id:string,name:string,price:number,description:string){
-console.log(imageUrl);
+viewProduct( imageUrl:string,id:string,name:string,price:number,description:string){
 
-  }
+  let navi: NavigationExtras = {
+   state: {
+    imageUrl:imageUrl,
+     id: id,
+     name:name,
+     price:price,
+     description:description
+   },
+};
+this.router.navigate(['view-product'], navi);
+}
+  
 }

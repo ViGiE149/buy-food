@@ -41,6 +41,6 @@
     <ion-badge slot="end">{{ totalPrice | currency:'R':'symbol':'1.2-2' }}</ion-badge>
   </ion-item>
 
-  <ion-button expand="full" [disabled]="totalItems === 0">Checkout</ion-button>
+  <ion-button expand="full" routerLink="/cart" [disabled]="totalItems === 0">Checkout</ion-button>
 </ion-content>
 

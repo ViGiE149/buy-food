@@ -44,8 +44,8 @@
 <ion-content class="ion-padding">
   <ion-card-header> Featured Food Items </ion-card-header>
 
-  <swiper-container [slidesPerView]="1" [loop]="true">
-    <swiper-slide *ngFor="let item of featuredItems">
+  <div class="swiper-container" >
+    <div class="swiper-slide" *ngFor="let item of featuredItems">
       <ion-card>
         <ion-card-content>
           <ion-item>
@@ -62,8 +62,8 @@
           </ion-item>
         </ion-card-content>
       </ion-card>
-    </swiper-slide>
-  </swiper-container>
+    </div>
+  </div>
 
   <ion-card>
     <ion-card-header> Promotions </ion-card-header>
