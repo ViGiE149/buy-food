@@ -1,74 +1,76 @@
-// 
-
 /* home.component.scss */
 
 ion-content {
   --ion-background-color: #f9f8f7; /* Light yellow background color */
 }
+
 ion-card {
   cursor: pointer;
-  margin-top: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow */
 }
-.card-header{
-width: 100%;
-margin: 0;
-background-color: lightgray; 
+
+.card-header {
+  width: 100%;
+  margin: 0;
+  background-color: lightgray;
 }
+
 ion-card-header {
   background-color: lightgray; /* Header background color - Yellow */
   color: #333333; /* Header text color */
   font-size: 18px;
   font-weight: bold;
 }
+
 ion-card-content {
   padding: 2px;
 }
+
 ion-list {
   margin: 0;
 }
+
 ion-item {
   border-bottom: 1px solid #e0e0e0; /* Light border between items */
   padding-bottom: 10px;
 }
+
 ion-thumbnail {
   width: 100px;
   height: 100px;
 }
+
 ion-label {
   margin-left: 15px;
 }
+
 .price {
   font-weight: bold;
   color: #ffc107; /* Yellow color for the price */
 }
+
 ion-item:hover {
   background-color: #fff3e0; /* Light background color on hover */
   transition: background-color 0.3s ease-in-out;
 }
-.swiper-container,.swiper-container-Categories{
+
+.swiper-container,
+.swiper-container-Categories {
   display: flex;
   overflow-x: scroll;
   gap: 4px;
-  width:100%;
+  width: 100%;
+}
 
-}
-.group{
-  position: fixed;
-  z-index: 100;
-}
-.swiper-container,.swiper-slide, .food{
-  width:100%;
-}
-.food{
+.food-list {
   border-radius: 10px;
-
-}
-ion-searchbar{
- border-radius: 10px;
-
+  box-shadow: none; /* No box shadow for the food list */
 }
 
+ion-searchbar {
+  border-radius: 10px;
+  margin-top: 30px;
+}
 
 /* Add these styles to your component's CSS file */
 
@@ -80,15 +82,14 @@ ion-searchbar{
   white-space: nowrap;
   height: 200px; /* Set a fixed height for the scroll container */
   position: relative;
-  
 }
 
 .scroll-item {
   flex: 0 0 auto;
-  width: 80%; /* Adjust the width of each item as needed */
+  width: 90%; /* Adjust the width of each item as needed */
   margin-right: 16px; /* Adjust the margin between items as needed */
   scroll-snap-align: start;
-  animation: scrollAnimation 10s linear infinite; 
+  animation: scrollAnimation 10s linear infinite;
 }
 
 @keyframes scrollAnimation {
@@ -99,7 +100,5 @@ ion-searchbar{
     transform: translateX(calc(-100% - 16px)); /* Adjust the width and margin between items */
   }
 }
-.food-list{
-  border-radius: 10px;
-  box-shadow: 0;
-}
+
+/* You can add more styling or adjustments based on your design */
