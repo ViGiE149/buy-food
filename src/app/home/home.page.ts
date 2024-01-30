@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -9,28 +10,28 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router,) {}
+  constructor(private router: Router,public authService: AuthService) {}
   featuredItems = [
     {
       id:"1",
       name: 'Pizza',
       description: 'Delicious pizza with various toppings',
       price: 10.99,
-      imageUrl: 'https://example.com/pizza.jpg',
+      imageUrl: 'assets/a79ee.jpg',
     },
     {
       id:"2",
       name: 'Burger',
       description: 'Classic burger with cheese and veggies',
       price: 8.49,
-      imageUrl: 'https://example.com/burger.jpg',
+      imageUrl: 'assets/IMG.jpg',
     },
     {
       id:"3",
       name: 'Salad',
       description: 'Fresh and healthy mixed greens salad',
       price: 5.99,
-      imageUrl: 'https://example.com/salad.jpg',
+      imageUrl: 'assets/scaled.jpg',
     },
   ];
 

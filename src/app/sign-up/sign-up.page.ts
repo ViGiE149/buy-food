@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +12,7 @@ export class SignUpPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private auth: AuthService,private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -25,6 +27,7 @@ export class SignUpPage implements OnInit {
       const username = this.registerForm.get('username')!.value;
       const email = this.registerForm.get('email')!.value;
       const password = this.registerForm.get('password')!.value;
+      this.auth.signUp(username,email,password);
       console.log('Registration attempt with:', username, email, password);
     }
   }

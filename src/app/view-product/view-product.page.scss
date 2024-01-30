@@ -7,6 +7,7 @@ ion-content {
   ion-card {
     margin-top: 20px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+ 
   }
   
   ion-card-header {
@@ -23,9 +24,13 @@ ion-content {
   ion-thumbnail {
     width: 100%;
     max-height: 200px;
+    height: 400px;
+  
     object-fit: cover; /* Ensure the image covers the entire thumbnail */
   }
-  
+  img{
+    border-radius: 3px;
+  }
   ion-label {
     margin-top: 10px;
   }

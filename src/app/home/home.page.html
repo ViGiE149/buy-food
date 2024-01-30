@@ -22,10 +22,14 @@
 
 <!-- home.component.html -->
 
-<ion-header color="dark">
+<!-- <ion-header color="dark">
   <ion-toolbar color="dark">
     <ion-title> Home </ion-title>
   </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding">
+  <div class="group">
   <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
   <div class="swiper-container-Categories">
     <div class="swiper-slide-Categories" *ngFor="let category of categories">
@@ -39,31 +43,28 @@
       >
     </div>
   </div>
-</ion-header>
+</div>
 
-<ion-content class="ion-padding">
-  <ion-card-header> Featured Food Items </ion-card-header>
-
-  <div class="swiper-container" >
-    <div class="swiper-slide" *ngFor="let item of featuredItems">
+  <div class="scroll-container">
+    <div *ngFor="let item of featuredItems" class="scroll-item" (click)="viewProduct(item.imageUrl, item.id, item.name, item.price, item.description)">
       <ion-card>
         <ion-card-content>
           <ion-item>
             <ion-thumbnail slot="start">
-              <img [src]="item.imageUrl" alt="{{ item.name }} Image" />
+              <img class="food" [src]="item.imageUrl" alt="{{ item.name }} Image" />
             </ion-thumbnail>
             <ion-label>
               <h2>{{ item.name }}</h2>
-              <p>{{ item.description }}</p>
-              <p class="price">
-                {{ item.price | currency:'USD':'symbol':'1.2-2' }}
-              </p>
+              <!-- <p>{{ item.description }}</p> -->
+              <p class="price">{{ item.price | currency:'USD':'symbol':'1.2-2' }}</p>
             </ion-label>
           </ion-item>
         </ion-card-content>
       </ion-card>
     </div>
   </div>
+  
+
 
   <ion-card>
     <ion-card-header> Promotions </ion-card-header>
@@ -76,8 +77,8 @@
     </ion-card-content>
   </ion-card>
 
-  <div class="card-header">Categories</div>
-  <ion-card *ngFor="let item of featuredItems" >
+
+  <ion-card class="food-list"  *ngFor="let item of featuredItems" >
         <ion-card-content (click)="viewProduct(item.imageUrl,item.id,item.name,item.price,item.description)">
           <ion-item>
             <ion-thumbnail slot="start">
