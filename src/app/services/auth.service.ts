@@ -16,6 +16,7 @@ enum AuthError {
 })
 export class AuthService {
   private isAuthenticated = true;
+  userEmail: any;
 
   constructor(
     public navCtrl: NavController,
@@ -67,6 +68,7 @@ export class AuthService {
     try {
       await this.auth.signInWithEmailAndPassword(email, password);
       loader.dismiss();
+      this.setUserEmail(email);
       this.isAuthenticated = true;
       this.navCtrl.navigateForward('/home');
     } catch (error) {
@@ -93,5 +95,14 @@ export class AuthService {
 
   isAuthenticatedUser() {
     return this.isAuthenticated;
+  }
+
+
+  setUserEmail(email: string): void {
+    this.userEmail = email;
+  }
+
+  getUserEmail(): string | null {
+    return this.userEmail;
   }
 }

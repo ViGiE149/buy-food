@@ -25,15 +25,15 @@
 <ion-header color="dark">
   <ion-toolbar color="dark">
     <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
-  <div class="swiper-container-Categories">
-    <div class="swiper-slide-Categories" *ngFor="let category of categories">
+  <div class="swiper-container-Categories"  *ngFor="let category of categories">
+    <div class="swiper-slide-Categories" *ngFor="let items of category.ccategories">
       <ion-button
         class="categories-option"
         size="small"
         shape="round"
         fill="clear"
       >
-        {{ category.name }}</ion-button
+        {{ items }}</ion-button
       >
     </div>
   </div>
@@ -75,7 +75,7 @@
   </ion-card>
 
 
-  <ion-card class="food-list"  *ngFor="let item of featuredItems" >
+  <ion-card class="food-list"  *ngFor="let item of allItems" >
         <ion-card-content (click)="viewProduct(item.imageUrl,item.id,item.name,item.price,item.description)">
           <ion-item>
             <ion-thumbnail slot="start">

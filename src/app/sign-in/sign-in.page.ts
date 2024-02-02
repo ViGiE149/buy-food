@@ -24,6 +24,7 @@ export class SignInPage implements OnInit {
       const email = this.loginForm.get('email')!.value;
       const password = this.loginForm.get('password')!.value;
       this.auth.login(email,password);
+      this.auth.setUserEmail(this.loginForm.get('email')!.value);
       console.log('Login attempt with:', email, password);
     }
   }
