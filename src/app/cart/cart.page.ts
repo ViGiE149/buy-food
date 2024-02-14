@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { ManageDataService } from '../services/manage-data.service';
 
 
 @Component({
@@ -8,20 +9,27 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
-  cartItems: any[] = [];
+  cartItems: any;
   totalPrice: number = 0;
   totalItems: number = 0;
+  orderList :any[]=[];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private service:ManageDataService) {}
 
   ngOnInit() {
     this.updateCart();
   }
 
   updateCart() {
-    this.cartItems = this.cartService.getItems();
+    this.cartItems = this.cartService.initializeCartItems();
     this.totalPrice = this.cartService.getTotalPrice();
     this.totalItems = this.cartService.getTotalItems();
+  
+      
+      // Calculate totalItems by summing up quantities
+      this.totalItems = this.cartItems.reduce((total: any, item: { order: { order: { quantity: any; }; }; }) => total + item.order.order.quantity, 0);
+
+    console.log( this.cartItems[0]?.order?.order?.quantity || "")
   }
 
 
@@ -33,6 +41,14 @@ export class CartPage implements OnInit {
   clearCart() {
     this.cartService.clearCart();
     this.updateCart();
+  }
+  
+
+ 
+
+  deleteItem(deleteItem:string){
+
+
   }
  
 }

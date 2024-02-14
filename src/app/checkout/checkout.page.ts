@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { ManageDataService } from '../services/manage-data.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,11 +11,12 @@ export class CheckoutPage implements OnInit {
   totalItems: number = 0;
   totalPrice: number = 0;
   selectedPaymentOption: string = 'creditCardDebitCard'; 
-
-  constructor(private cartService: CartService) {}
+  orderList :any[]=[];
+  constructor(private cartService: CartService,private service:ManageDataService) {}
 
   ngOnInit() {
     this.updateCart();
+    this.getOrderList();
   }
 
   updateCart() {
@@ -39,4 +41,21 @@ export class CheckoutPage implements OnInit {
     this.cartService.clearCart();
     this.updateCart();
   }
+
+
+  getOrderList() {
+    this.service.getOrdersList().subscribe(
+      (data: any) => {
+        // Handle the data here
+  
+        this.orderList=data;
+        console.log('Categories Data:', this.orderList);
+      },
+      (error) => {
+        // Handle errors here
+        console.error('Error fetching categories:', error);
+      }
+    );
+  }
+  
 }

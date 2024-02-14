@@ -9,21 +9,27 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  
   <ion-list *ngIf="cartItems.length > 0; else emptyCart">
-    <ion-item *ngFor="let item of cartItems">
-      <ion-thumbnail slot="start">
-        <img [src]="item.product.imageUrl" alt="{{ item.product.name }} Image">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ item.product.name }}</h2>
-        <p class="price">{{ item.product.price | currency:'R':'symbol':'1.2-2' }}</p>
-        <ion-buttons slot="end">
-          <ion-button (click)="removeFromCart(item.product.id)">Remove</ion-button>
-        </ion-buttons>
-      </ion-label>
-      <ion-badge slot="end">{{ item.quantity }}</ion-badge>
-    </ion-item>
+    <ion-item-sliding *ngFor="let item of cartItems">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="item.order.order.imageUrl" alt="{{ item.order.order.name }} Image">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.order.order.name }}</h2>
+          <p class="price">{{ item.order.order.price | currency:'R':'symbol':'1.2-2' }}</p>
+        </ion-label>
+   
+        <ion-badge slot="end">{{ item.order.order.quantity }}</ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removeFromCart(item.order.order.id)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+  
+  
 
   <ng-template #emptyCart>
     <ion-text class="empty-cart-text" color="medium">Your cart is empty.</ion-text>

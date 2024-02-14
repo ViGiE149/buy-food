@@ -27,4 +27,7 @@ export class ManageDataService {
  addToCart() {
   return this.db.collection("orders-list");
 }
+getOrdersList(){
+  return this.db.collection("orders-list").valueChanges();
+}
 }
