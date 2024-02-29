@@ -28,7 +28,8 @@ export class SignInPage implements OnInit {
       console.log('Login attempt with:', email, password);
     }
   }
-
+  loginWithFacebook(){}
+  loginWithGoogle(){}
   ngOnInit() {
   }
 

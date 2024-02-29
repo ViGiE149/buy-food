@@ -1,33 +1,40 @@
 <!-- login.component.html -->
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="small-top-right-corner"></div>
+  <h1>Let Get You Signed in!</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="lowerPart">
-       <ion-label position="floating">Email</ion-label>
-      <ion-input formControlName="email" type="email" required></ion-input>
+    <ion-input placeholder="Email" formControlName="email" type="email" required
+      ><ion-icon name="person" slot="start"></ion-icon
+    ></ion-input>
 
+    <ion-input
+      placeholder="Password"
+      formControlName="password"
+      type="password"
+      required
+      ><ion-icon name="lock-closed" slot="start"></ion-icon
+    ></ion-input>
 
+    <ion-item  slot="start">
+      <ion-text  routerLink="/reset-password" slot="end"
+        >Forgot Password?<span >cick here</span></ion-text
+      >
+    </ion-item>
 
-      <ion-label position="floating">Password</ion-label>
-      <ion-input formControlName="password" type="password" required></ion-input>
- 
-    <ion-text>
-      <p class="forgot-password" >Forgot Password?</p>
-    </ion-text>
+    <ion-button expand="block" type="submit" [disabled]="!loginForm.valid"
+      >Register</ion-button
+    >
 
-    <ion-button expand="full" type="submit" routerLink="/home" [disabled]="!loginForm.valid">Login</ion-button>
-   
-    <ion-text>
-      <p class="create-account"  routerLink="/sign-up" >Create Account</p>
-    </ion-text>
-  </div>
+    <div class="button-container">
+      <ion-button size="small" (click)="loginWithGoogle()">
+        <ion-img src="assets/google.png"></ion-img>
+      </ion-button>
+
+      <ion-button size="small" (click)="loginWithFacebook()">
+        <ion-img src="assets/facebook.png"></ion-img>
+      </ion-button>
+    </div>
   </form>
-
+  <p>dont have an account?<span routerLink="/sign-up">Sign Up</span></p>
 </ion-content>
-

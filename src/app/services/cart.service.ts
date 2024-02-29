@@ -11,20 +11,10 @@ export class CartService {
     this.initializeCartItems();
    }
 
- initializeCartItems()  {
-    // Example: Fetch initial data from Firestore or set initial values
-    this.db.collection("orders-list").valueChanges().subscribe(
-      async (data: any[]) => {
-        this.cartItems = data;
-        console.log('Initial Cart Items:', data);
-        return this.cartItems;
-   
-      },
-      (error) => {
-        console.error('Error fetching initial cart items:', error);
-      }
-    );
-  }
+   initializeCartItems() {
+    return this.db.collection("orders-list").valueChanges();
+    }
+ 
 
 
   // async getItems()  {
@@ -33,14 +23,19 @@ export class CartService {
   // }
 
   addToCart(product: any, quantity: number) {
-    const existingItem = this.cartItems.find((item) => item.product.id === product.id);
-
-    if (existingItem) {
-      existingItem.quantity += quantity;
-    } else {
-      this.cartItems.push({ product, quantity });
+    try {
+      const existingItem = this.cartItems.find((item) => item.product.id === product.id);
+  
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        this.cartItems.push({ product, quantity });
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
     }
   }
+  
 
   removeFromCart(productId: string) {
     this.cartItems = this.cartItems.filter((item) => item.product.id !== productId);

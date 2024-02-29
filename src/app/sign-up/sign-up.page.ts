@@ -18,6 +18,7 @@ export class SignUpPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      agreeTerms: [false, Validators.requiredTrue],  
     });
   }
 
@@ -31,7 +32,8 @@ export class SignUpPage implements OnInit {
       console.log('Registration attempt with:', username, email, password);
     }
   }
-
+  loginWithFacebook(){}
+  loginWithGoogle(){}
   ngOnInit() {
   }
 

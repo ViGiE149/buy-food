@@ -1,38 +1,105 @@
 /* register.component.scss */
 
 ion-content {
-    --ion-background-color: #f8f8f8; /* Light background color */
-  
-    form {
-      max-width: 350px;
-      margin: 0 auto;
+  --ion-background-color: #f8f8f8; /* Light background color */
+
+  form {
+ 
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  ion-item {
+    margin-bottom: 15px;
+  }
+
+  ion-input {
+    border: 2px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  ion-button {
+    --background: green; /* Yellow color */
+    --color: #333333; /* Dark text color */
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    --padding-start: 5px; /* Adjust the padding as needed */
+    --padding-end: 5px; /* Adjust the padding as needed */
+  }
+
+  ion-button:hover {
+    --background: green; /* Darker shade of yellow on hover */
+    --color: #333333; /* Dark text color on hover */
+  }
+
+  span {
+    margin-left:2px;
+    color: green;
+  }
+
+  .small-top-right-corner {
+    background: rgba(0, 255, 0, 0.2);
+    height: 150px;
+    width: 150px;
+    margin-left: 100%;
+    margin-top: -55px;
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-weight: bolder;
+    padding-left: 11px;
+  }
+
+  p {
+    text-align: center;
+   
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+
+  .button-container ion-button {
+    --background: rgba(169, 169, 169, 0); /* Light gray color with full transparency */
+    width: 100px;
+    height: 90px;
+    box-shadow: none; /* Remove the box shadow */
+  }
+  /* Optionally, you can remove the default outline when the button is focused */
+  .button-container ion-button:focus {
+    outline: none;
+  }
+
+  /* Media Query for Desktop Screens */
+  @media only screen and (min-width: 768px) {
+    ion-content {
+      form {
+        max-width: 500px; /* Adjust the max-width for larger screens */
+      }
     }
-  
-    ion-item {
-      margin-bottom: 15px;
-    }
-  
-    ion-input {
-      border: 2px solid #e0e0e0; /* Light gray border */
-      border-radius: 8px;
-      padding: 10px;
-    }
-  
-    ion-button {
-      --background: #ffd600; /* Yellow color */
-      --color: #333333; /* Dark text color */
-      border: none;
-      border-radius: 8px;
-      padding: 15px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    }
-  
-    ion-button:hover {
-      --background: #ffc107; /* Darker shade of yellow on hover */
-      --color: #333333; /* Dark text color on hover */
+
+    .button-container ion-button {
+      width: 120px; /* Adjust the button width for larger screens */
+      height: 110px; /* Adjust the button height for larger screens */
     }
   }
-  
+
+  .small-top-right-corner {
+    background: rgba(0, 255, 0, 0.2);
+    height: 150px;
+    width: 150px;
+    margin-left: 85%;
+    margin-top: -55px;
+    border-radius: 50%;
+  }
+}

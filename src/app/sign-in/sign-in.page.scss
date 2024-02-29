@@ -4,38 +4,25 @@ ion-content {
   --ion-background-color: #f8f8f8; /* Light background color */
 
   form {
-    max-width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 10px;
   }
-
-  ion-item {
-    margin-bottom: 20px;
-  }
-
   ion-input {
-    border: 2px solid #3498db; /* Blue border */
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 16px;
+    border: 2px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px;
+    margin-top: 10px;
   }
 
   ion-button {
-    --background: #3498db; /* Blue color */
-    --color: #ffffff; /* White text color */
+    --background: green; /* Yellow color */
+    --color: #333333; /* Dark text color */
     border: none;
-    border-radius: 10px;
-    padding: 15px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: 8px;
+ /* Adjust the padding as needed */
   }
 
   ion-button:hover {
-    --background: #2980b9; /* Darker shade of blue on hover */
+    --background:green; /* Darker shade of blue on hover */
   }
 
   .forgot-password {
@@ -45,16 +32,63 @@ ion-content {
   }
 
   .create-account {
-    color: #3498db; /* Blue color */
+    color: green; /* Blue color */
     text-align: center;
     margin-top: 10px;
   }
 }
-.lowerPart{
-  border-radius: 40px 40px 0 0;
-  padding: 25px;
-background-color: rgb(246, 246, 110);
-width: 100%;
-position: absolute;
-bottom: 0;
+h1 {
+  font-weight: bolder;
+  padding-left: 11px;
+}
+span {
+  margin-left:3px;
+  color: green;
+} 
+p {
+  text-align: center;
+ 
+}
+.small-top-right-corner {
+  background: rgba(0, 255, 0, 0.2);
+  height: 150px;
+  width: 150px;
+  margin-left: 100%;
+  margin-top: -55px;
+  border-radius: 50%;
+}
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.button-container ion-button {
+  --background: rgba(169, 169, 169, 0); /* Light gray color with full transparency */
+  width: 100px;
+  height: 90px;
+  box-shadow: none; /* Remove the box shadow */
+}
+/* Optionally, you can remove the default outline when the button is focused */
+.button-container ion-button:focus {
+  outline: none;
+}
+@media only screen and (min-width: 768px) {
+  ion-content {
+   
+  }
+
+  .button-container ion-button {
+    width: 120px; /* Adjust the button width for larger screens */
+    height: 110px; /* Adjust the button height for larger screens */
+  }
+}
+
+.small-top-right-corner {
+  background: rgba(0, 255, 0, 0.2);
+  height: 150px;
+  width: 150px;
+  margin-left: 85%;
+  margin-top: -55px;
+  border-radius: 50%;
 }

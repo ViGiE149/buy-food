@@ -21,9 +21,19 @@ export class CartPage implements OnInit {
   }
 
   updateCart() {
-    this.cartItems = this.cartService.initializeCartItems();
-    this.totalPrice = this.cartService.getTotalPrice();
-    this.totalItems = this.cartService.getTotalItems();
+    this.cartService.initializeCartItems().subscribe(
+      (data: any[]) => {
+        this.cartItems = data;
+        console.log('Initial Cart Items:', data);
+        this.totalPrice = this.cartService.getTotalPrice();
+        this.totalItems = this.cartService.getTotalItems();
+      },
+      (error:any) => {
+        console.error('Error fetching initial cart items:', error);
+      }
+    );
+    
+  
   
       
       // Calculate totalItems by summing up quantities

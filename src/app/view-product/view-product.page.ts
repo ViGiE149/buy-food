@@ -89,7 +89,7 @@ export class ViewProductPage implements OnInit {
     })
     .then((docRef) => {
       console.log("Category added with ID: ", docRef.id);
-       this.router.navigateByUrl("/checkout")
+       this.router.navigateByUrl("/cart")
 
     })
     .catch((error) => {
