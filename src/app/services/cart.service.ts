@@ -8,13 +8,18 @@ export class CartService {
   private cartItems: any[] = [];
 
   constructor(private db: AngularFirestore) {
-    this.initializeCartItems();
+    //this.initializeCartItems();
    }
 
    initializeCartItems() {
     return this.db.collection("orders-list").valueChanges();
     }
- 
+
+    private async removeCartItemFromFirestore(productId: string) {
+      console.log(productId);
+      // Remove the item from Firestore (Assuming you have a 'cartItems' collection in Firestore)
+     return  await this.db.collection('cartItems').doc(productId).delete();
+    }
 
 
   // async getItems()  {
@@ -38,7 +43,8 @@ export class CartService {
   
 
   removeFromCart(productId: string) {
-    this.cartItems = this.cartItems.filter((item) => item.product.id !== productId);
+   console.log('Document successfully deleted from Firestore!');
+     return this.db.collection('cartItems', ref => ref.where('id', '==', productId)).get();
   }
 
   getTotalPrice() {

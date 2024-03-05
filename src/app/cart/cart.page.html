@@ -10,21 +10,23 @@
 
 <ion-content class="ion-padding">
   
-  <ion-list *ngIf="cartItems.length > 0; else emptyCart">
+  <ion-list *ngIf="cartItems && cartItems.length > 0; else emptyCart">
     <ion-item-sliding *ngFor="let item of cartItems">
       <ion-item>
         <ion-thumbnail slot="start">
           <img [src]="item.order.order.imageUrl" alt="{{ item.order.order.name }} Image">
         </ion-thumbnail>
         <ion-label>
-          <h2>{{ item.order.order.name }}</h2>
-          <p class="price">{{ item.order.order.price | currency:'R':'symbol':'1.2-2' }}</p>
+          <h2>{{ item.order?.order?.name }}</h2>
+
+         
+          <p class="price">{{ item.order?.order?.price | currency:'R':'symbol':'1.2-2' }}</p>
         </ion-label>
    
-        <ion-badge slot="end">{{ item.order.order.quantity }}</ion-badge>
+        <ion-badge slot="end">{{ item?.order?.order?.quantity }}</ion-badge>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="removeFromCart(item.order.order.id)">Delete</ion-item-option>
+        <ion-item-option color="danger" (click)="removeFromCart(item.order?.order?.id)">Delete</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
