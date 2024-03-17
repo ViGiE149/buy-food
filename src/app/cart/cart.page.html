@@ -12,7 +12,7 @@
   
   <ion-list *ngIf="cartItems && cartItems.length > 0; else emptyCart">
     <ion-item-sliding *ngFor="let item of cartItems">
-      <ion-item>
+      <ion-item (click)="goTViewProduct(item.imageUrl, item.id, item.name, item.price, item.description)">
         <ion-thumbnail slot="start">
           <img [src]="item.order.order.imageUrl" alt="{{ item.order.order.name }} Image">
         </ion-thumbnail>

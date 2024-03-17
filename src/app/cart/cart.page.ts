@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ManageDataService } from '../services/manage-data.service';
+import { NavigationExtras, Router } from '@angular/router';
 ///
 
 @Component({
@@ -14,7 +15,7 @@ export class CartPage implements OnInit {
   totalItems: number = 0;
   orderList :any[]=[];
 
-  constructor(private cartService: CartService,private service:ManageDataService) {}
+  constructor(private router: Router,private cartService: CartService,private service:ManageDataService) {}
 
   ngOnInit() {
     this.updateCart();
@@ -85,7 +86,20 @@ removeFromCart(productId: string) {
     this.updateCart();
   }
   
+  goTViewProduct(imageUrl:string,id:string,name:string,price:number,description:string){
 
+    let navi: NavigationExtras = {
+      state: {
+       imageUrl:imageUrl,
+        id: id,
+        name:name,
+        price:price,
+        description:description
+      },
+   };
+   this.router.navigate(['view-product'], navi);
+
+  }
  
 
   deleteItem(deleteItem:string){

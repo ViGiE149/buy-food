@@ -59,7 +59,7 @@ export class ViewProductPage implements OnInit {
   }
 
 
-
+query:any;
   addToCart() {
     if(this.quantity==1){
     this.subtotal=this.productInfor.price;
@@ -83,7 +83,16 @@ export class ViewProductPage implements OnInit {
 
       }
     };
+    
+    this.service.checkOnCart(2222444244426646).subscribe((data:any) => {
 
+     this.query=data;
+     console.log(  this.query);
+    })
+  
+
+  if(this.query.lenght>0){
+    console.log("1");
     this.service.addToCart().add({
      order:orderObject 
     })
@@ -95,6 +104,9 @@ export class ViewProductPage implements OnInit {
     .catch((error) => {
       console.error("Error adding category: ", error);
     });
+  }else{
+    console.log("2");
+  }
   }
 
   // Replace this with your actual method to fetch product details

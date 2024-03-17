@@ -15,14 +15,18 @@ enum AuthError {
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = true;
+  private isAuthenticated = false;
   userEmail: any;
+  private authenticationTime: any;
+  private readonly expirationTimeInMinutes = 60; // Adjust as needed
 
   constructor(
     public navCtrl: NavController,
     private auth: AngularFireAuth,
     private loadingController: LoadingController
-  ) {}
+  ) {
+    this.checkAuthentication();
+  }
 
   private async presentLoader(typeOfFuction:any) {
     const loader = await this.loadingController.create({
@@ -70,6 +74,13 @@ export class AuthService {
       loader.dismiss();
       this.setUserEmail(email);
       this.isAuthenticated = true;
+
+
+      localStorage.setItem('isAuthenticated', 'true');
+      this.authenticationTime = Date.now();
+      localStorage.setItem('authenticationTime',  this.authenticationTime.toString());
+     
+
       this.navCtrl.navigateForward('/home');
     } catch (error) {
       loader.dismiss();
@@ -89,15 +100,41 @@ export class AuthService {
     }
   }
 
-  logout() {
-    this.isAuthenticated = false;
-  }
-
+ 
   isAuthenticatedUser() {
+    if (this.isAuthenticated && this.authenticationTime) {
+      const currentTime = Date.now();
+      const elapsedTimeInMinutes = (currentTime - this.authenticationTime) / (1000 * 60);
+      // Check if elapsed time exceeds expiration time
+      if (elapsedTimeInMinutes > this.expirationTimeInMinutes) {
+        // If expired, log out the user
+        this.logout();
+        return false;
+      }
+    }
     return this.isAuthenticated;
   }
 
 
+  private checkAuthentication() {
+    // Check if authentication state and authentication time are stored in local storage
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    const storedAuthenticationTime = localStorage.getItem('authenticationTime');
+    if (isAuthenticated && storedAuthenticationTime) {
+      this.isAuthenticated = true;
+      this.authenticationTime = parseInt(storedAuthenticationTime, 10);
+    }
+   // console.log(this.authenticationTime)
+  }
+
+
+  logout() {
+    this.isAuthenticated = false;
+    this.authenticationTime = null;
+    // Remove authentication state and authentication time from local storage
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('authenticationTime');
+  }
   setUserEmail(email: string): void {
     this.userEmail = email;
   }

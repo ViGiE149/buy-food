@@ -24,7 +24,11 @@ export class ManageDataService {
     return this.db.collection("product-list", ref => ref.where("name", "==", searchTerm)).valueChanges();
  }
 
- addToCart() {
+ checkOnCart(id:any) {
+  return this.db.collection("orders-list", ref => ref.where("id", "==", id)).valueChanges();
+}
+
+addToCart() {
   return this.db.collection("orders-list");
 }
 getOrdersList(){
