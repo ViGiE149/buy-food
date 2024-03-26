@@ -1,29 +1,5 @@
-<!-- <ion-header [translucent]="true">
+<ion-header >
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content> -->
-<!-- home.component.html -->
-
-<!-- home.component.html -->
-
-<ion-header color="dark">
-  <ion-toolbar color="dark">
     <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
   <div class="swiper-container-Categories"  *ngFor="let category of categories">
     <div class="swiper-slide-Categories" *ngFor="let items of category.ccategories">
@@ -41,6 +17,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  
  
   <div class="scroll-container">
     <div *ngFor="let item of featuredItems" class="scroll-item" (click)="viewProduct(item.imageUrl, item.id, item.name, item.price, item.description)">
@@ -98,15 +75,15 @@
   <ion-toolbar>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button >
+        <ion-tab-button routerLink="/home" >
           <ion-icon name="home-sharp"></ion-icon>
            Home
         </ion-tab-button>
-        <ion-tab-button >
+        <ion-tab-button routerLink="/cart" >
           <ion-icon name="cart-sharp"></ion-icon>
           Cart
         </ion-tab-button>
-        <ion-tab-button >
+        <ion-tab-button routerLink="/profile">
           <ion-icon name="person-sharp"></ion-icon>
           Profile
         </ion-tab-button>
