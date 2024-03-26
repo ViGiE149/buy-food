@@ -11,6 +11,46 @@ export class CartService {
     //this.initializeCartItems();
    }
 
+   async updateQ(id:any,quantity:any,subtotal:any): Promise<string> { // Specify return type as Promise<string>
+
+    try {
+      const query = this.db.collection("orders-list", (ref) =>
+        ref.where("id", "==", id)
+      );
+  
+      const querySnapshot = await query.get().toPromise();
+  
+      const promises: Promise<any>[] = []; // Array to store promises
+  
+      querySnapshot?.forEach((documentSnapshot: { id: any; }) => {
+        const documentId = documentSnapshot.id;
+  
+        // Push the update promise into the promises array
+        promises.push(
+          this.db.collection("orders-list").doc(documentId).update({
+            quantity: quantity, // Update the comments in the Firestore document
+            subtotal: subtotal
+          }).then(() => {
+            // this.getConfessionData();
+            // this.newComment  = '';
+            console.log("quantity and subtotal updated successfully.");
+            return "quantity and subtotal updated successfully."; // Return the success message
+          })
+        );
+      });
+  
+      // Wait for all update promises to resolve
+      await Promise.all(promises);
+  
+      return "All documents updated successfully."; // Return success message after all updates are done
+    } catch (error) {
+      console.error("Error updating comments: ", error);
+      return "Error updating comments: " + error; // Return error message
+    }
+  }
+
+
+
    initializeCartItems() {
     return this.db.collection("orders-list").valueChanges();
     }

@@ -14,7 +14,8 @@ export class CartPage implements OnInit {
   totalPrice: number = 0;
   totalItems: number = 0;
   orderList :any[]=[];
-
+  result:any;
+  subtotal:any;
   constructor(private router: Router,private cartService: CartService,private service:ManageDataService) {}
 
   ngOnInit() {
@@ -30,15 +31,15 @@ async  updateCart() {
 
       this.totalPrice =
       await this.cartItems ? 
-      this.cartItems.reduce((total: any, item: { order: { order: { quantity: any; price: any } } }) =>
-        total + (item.order?.order?.quantity || 0) * (item.order?.order?.price || 0), 0) : 0;
+      this.cartItems.reduce((total: any, item:any) =>
+        total + (item?.quantity || 0) * (item.price || 0), 0) : 0;
    
 
         this.totalItems =
       (await this.cartItems
         ? this.cartItems.reduce(
-            (total: any, item: { order: { order: { quantity: any } } }) =>
-              total + (item.order?.order?.quantity || 0),
+            (total: any, item: any) =>
+              total + (item.quantity || 0),
             0
           )
         : 0
@@ -50,13 +51,13 @@ async  updateCart() {
     );
   
     // Calculate totalItems by summing up quantities
-    this.totalItems = await this.cartItems ? this.cartItems.reduce((total: any, item: { order: { order: { quantity: any; }; }; }) => total + (item.order?.order?.quantity || 0), 0) : 0;
+    this.totalItems = await this.cartItems ? this.cartItems.reduce((total: any, item:any) => total + (item.quantity || 0), 0) : 0;
   
     //console.log(this.cartItems[0]?.order?.order?.quantity || "");
   }
   
 
-result:any;
+
 removeFromCart(productId: string) {
   // Find the index of the item with the specified productId
   const index = this.cartItems.findIndex((item: { id: string; }) => item.id === productId);
@@ -72,10 +73,6 @@ removeFromCart(productId: string) {
         }).catch((error) => {
           console.error('Error removing document: ', error);
         });
-
-        // Remove from the local cartItems array
-       // this.cartItems.splice(index, 1);
-       // this.calculateTotal();
       });
     });
   }
@@ -87,7 +84,6 @@ removeFromCart(productId: string) {
   }
   
   goTViewProduct(imageUrl:string,id:string,name:string,price:number,description:string){
-
     let navi: NavigationExtras = {
       state: {
        imageUrl:imageUrl,
@@ -106,5 +102,47 @@ removeFromCart(productId: string) {
 
 
   }
+
+
+  increaseQuantity(item: any) {
+
+    item.quantity++; // Increase quantity
+    this.updateTotalPriceAndItems(); // Recalculate total price and total items
+    item.subtotal+=item.price;
+    const result= this.cartService.updateQ(item.id,item.quantity,item.subtotal); 
+    console.log(result);
+  }
+  
+  decreaseQuantity(item: any) {
+    if (item.quantity > 1) {
+      item.quantity--; // Decrease quantity if greater than 1
+      this.updateTotalPriceAndItems();
+      item.subtotal-=item.price;
+       const result= this.cartService.updateQ(item.id,item.quantity, item.subtotal);
+       console.log(result);
+      
+    }
+  }
+  
+  updateTotalPriceAndItems() {
+    this.totalPrice = this.cartItems.reduce((total: number, item: any) =>
+      total + (item.quantity || 0) * (item.price || 0), 0);
+  
+    this.totalItems = this.cartItems.reduce(
+      (total: any, item: any) => total + (item.quantity || 0), 0
+    );
  
+    //const result= this.cartService.updateQ(:any);
+    //console.log(result);
+
 }
+
+
+
+
+
+}
+
+
+
+
